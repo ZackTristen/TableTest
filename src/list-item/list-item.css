@@ -1,3 +1,6 @@
 .list-item {
     width: 90%;
 }
+tr {
+    margin-right: 40px;
+}
