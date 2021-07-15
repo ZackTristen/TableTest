@@ -6,10 +6,8 @@ import ServiceEmploy from '../services/service';
 class ListItem extends React.Component {
 
     async componentDidMount() {
-
     const serviceEmploy = new ServiceEmploy();
     serviceEmploy.getResource().then(res => this.setState({data: [...res]}))
-
     }
 
     componentDidUpdate() {

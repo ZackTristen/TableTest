@@ -6,8 +6,7 @@ import ModalEdit from '../modal-edit/modal-edit';
 
 class Item extends React.Component {
 
-    
-
+ 
     state = {
         active: false,
         person: this.props.item
