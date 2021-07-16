@@ -1,5 +1,29 @@
+.modal_container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.493);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition-duration: 200ms;
+    
+}
+
 .modal_edit_content {
+    margin: auto;
+    padding: 20px;
     width: 400px;
     height: 200px;
     background-color: white;
+}
+
+.modal_container_active {
+    transform: scale(1);
+    transition-duration: 200ms;
 }

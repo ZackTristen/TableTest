@@ -12,16 +12,17 @@ class ListItem extends React.Component {
     }
 
     
+
     state = {
         active: false,
         data: [],
         newEmploy: {
-            id: null,
             firstName: '',
             lastName: ''
         }
-
     }
+
+
     setActive = (value) => {
         if (this.state.active) {
             this.setState({ active: value })
@@ -30,10 +31,11 @@ class ListItem extends React.Component {
             this.setState({ active: value })
         }
     }
-
-    calculateLength = () => {
-        const lengthArray = this.state.data.length
-        return lengthArray;
+   
+    calculateId = () => {
+        const {data} = this.state
+        const id = Math.max(...data.map(({id}) => id ))
+        return id;
     }
 
     deleteEmploy = async (id) => {
@@ -55,17 +57,19 @@ class ListItem extends React.Component {
 
     addEmploy = async (e) => {
         e.preventDefault()
-        const {active} = this.state
-        const { id, firstName, lastName } = this.state.newEmploy
+        const {active} = this.state;
+        const { firstName, lastName } = this.state.newEmploy
         const newEmploy = {
-            id: this.calculateLength() + 1,
+            id: this.calculateId() + 1,
             firstName: firstName,
             lastName: lastName
         }
 
         if (firstName.trim().length > 0 && lastName.trim().length && active) {
+            
             const resStatus = await serviceEmploy.postPerson(newEmploy)
             if (resStatus === 201 || resStatus === 200) {
+                
                 this.setState({
                     data: [
                         ...this.state.data,
@@ -74,6 +78,7 @@ class ListItem extends React.Component {
                 })
                 this.clearInputForms()
                 this.setActive(false)
+                // console.log(this.state)
             } 
         }
        
@@ -82,7 +87,6 @@ class ListItem extends React.Component {
     clearInputForms = () => {
         this.setState({
             newEmploy: {
-                id: null,
                 firstName: '',
                 lastName: ''
             }
@@ -108,6 +112,20 @@ class ListItem extends React.Component {
         })
 
     }
+    
+
+    changeData = (newData, idx) => {
+        this.setState({
+            data: [
+                ...this.state.data.slice(0, idx),
+                newData,
+                ...this.state.data.slice(idx + 1),
+            ]})
+    }
+
+  
+
+   
 
     render() {
         const { data } = this.state;
@@ -128,7 +146,10 @@ class ListItem extends React.Component {
                                 return <Item 
                                 item={item} 
                                 key={item.id}
-                                deleteEmploy={this.deleteEmploy} />
+                                deleteEmploy={this.deleteEmploy}
+                                changeData={this.changeData}
+                                data = {this.state.data}
+                                 />
                             })
                         }
                     </tbody>
@@ -136,8 +157,8 @@ class ListItem extends React.Component {
                 <div className='btn_add_user'>
                     <button onClick={() => this.setActive(true)}>Добавить пользователя</button>
                     <ModalAdd
-                        active={this.state.active}
-                        setActive={this.setActive}
+                        activeModalAdd={this.state.active}
+                        setActiveModalAdd={this.setActive}
                         addEmploy={this.addEmploy}
                         onChangeFirstName={this.onChangeFirstName}
                         onChangeLastName={this.onChangeLastName}

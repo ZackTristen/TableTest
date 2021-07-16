@@ -13,21 +13,34 @@ class ServiceEmploy {
     postPerson = async (dataPost) => {
         
         const res = await fetch(this._baseUrl, {
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify(dataPost),
             headers: {
                 "Content-type": "application/json"
             }
         })
-        return res.status
+        return res.status;
     }
 
     deletePerson = async (id) => {
-        const res = await fetch(`${this._baseUrl}/${id}`, {
+        const res = await fetch(`${this._baseUrl}${id}`, {
         method: 'DELETE'
         })
         return res.status;
     }
+
+    editPerson = async (id, editedData) => {
+        const res = await fetch(`${this._baseUrl}${id}`, {
+            method: 'PUT',
+            body: JSON.stringify(editedData),
+            headers: {
+                "Content-type" : "application/json"
+            }
+            })
+            return res.status;
+    }
+
+    
 }
 
 export default ServiceEmploy;
