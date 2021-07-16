@@ -2,10 +2,31 @@ body {
     margin: 0;
 }
 
-.app {
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+input {
+    margin-top: 5px;
 }
+button {
+    padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  /* transform: scale(1);
+  transition-duration: 200ms;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.205);
+  border-radius: 5px;
+  min-width: 100px;
+  min-height: 30px; */
+}
+/* button:hover {
+
+transform: scale(1.3);
+transition-duration: 200ms;
+} */
+
+
+.app {
+    min-height: 568px;
+    min-width: 320px;
+}
+

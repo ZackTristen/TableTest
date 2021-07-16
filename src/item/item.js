@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalEdit from '../modal-edit/modal-edit';
 import ServiceEmploy from '../services/service';
+import './item.css' 
 
 const serviceEmploy = new ServiceEmploy()
 class Item extends React.Component {
@@ -80,15 +81,17 @@ class Item extends React.Component {
 
         const { item: { firstName, lastName, id }, deleteEmploy } = this.props
         return (
-            <tr >
+            <tr className='row'>
                 <td>{firstName}</td>
                 <td>{lastName}</td>
                 <td>
-                    <button
-                        onClick={() => this.setActive(true)}>
-                        Редактировать сотрудника
-                    </button>
-                    <button onClick={() => deleteEmploy(id)}>Удалить сотрудника</button>
+                    
+                        <i className="fas fa-user-edit" onClick={() => this.setActive(true)}><button
+                        onClick={() => this.setActive(true)}></button></i>
+                    
+                    
+                        <i className="fas fa-user-slash" onClick={() => deleteEmploy(id)} ><button onClick={() => deleteEmploy(id)}></button></i>
+                        
                     <ModalEdit
                         setActive={this.setActive}
                         item={this.state.itemEdited}

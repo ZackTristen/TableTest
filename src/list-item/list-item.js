@@ -2,7 +2,7 @@ import React from 'react';
 import Item from '../item/item'
 import ModalAdd from '../modal-add/modal-add';
 import ServiceEmploy from '../services/service';
-
+import './list-item.css'
 
 const serviceEmploy = new ServiceEmploy();
 class ListItem extends React.Component {
@@ -78,12 +78,13 @@ class ListItem extends React.Component {
                 })
                 this.clearInputForms()
                 this.setActive(false)
-                // console.log(this.state)
             } 
         }
        
 
     }
+
+
     clearInputForms = () => {
         this.setState({
             newEmploy: {
@@ -130,14 +131,15 @@ class ListItem extends React.Component {
     render() {
         const { data } = this.state;
         return (
-
             <div className='list_item'>
-                <table>
-                    <thead>
+                <div className='table'>
+                <table cellPadding='7' cellSpacing='7' >
+                    <thead >
                         <tr>
-                            <td>Имя</td>
-                            <td>Фамилия</td>
-                            <td>Действия</td>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Действия</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -154,8 +156,8 @@ class ListItem extends React.Component {
                         }
                     </tbody>
                 </table>
-                <div className='btn_add_user'>
-                    <button onClick={() => this.setActive(true)}>Добавить пользователя</button>
+                </div>
+                   <i className="far fa-plus-square" onClick={() => this.setActive(true)}> <button className='btn_add' onClick={() => this.setActive(true)}> Добавить пользователя</button></i> 
                     <ModalAdd
                         activeModalAdd={this.state.active}
                         setActiveModalAdd={this.setActive}
@@ -163,7 +165,6 @@ class ListItem extends React.Component {
                         onChangeFirstName={this.onChangeFirstName}
                         onChangeLastName={this.onChangeLastName}
                         newEmploy={this.state.newEmploy} />
-                </div>
             </div>
         )
     }

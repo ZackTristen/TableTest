@@ -7,13 +7,15 @@ const ModalEdit = (props) => {
     return (
         <div
             className={`modal_container_${active ? 'active' : ''} modal_container`} onClick={() => setActive(false)}>
-            <div className='modal_edit_content' onClick={(e) => e.stopPropagation()}>
-                <span> Редактирование сотрудника </span>
-                <form onSubmit={(e) => editPerson(id, e)}>
+            <div className='modal_content' onClick={(e) => e.stopPropagation()}>
+                <span className='description'> Редактирование сотрудника </span>
+                <form onSubmit={(e) => editPerson(id, e)} className='form'>
                     <input placeholder='Введите имя' value={item.firstName} onChange={(e) => onChangeFirstName(e.target.value)} />
                     <input placeholder='Введите фамилию' value={item.lastName} onChange={(e) => onChangeLastName(e.target.value)} />
+                    <div className='button_container'>
                     <button type='submit' onClick={(e) => editPerson(id, e)}> Редактировать </button>
                     <button type='close' onClick={() => setActive(false)}>Закрыть окно</button>
+                    </div>
                 </form>
             </div>
         </div>

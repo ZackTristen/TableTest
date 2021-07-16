@@ -12,13 +12,15 @@ class ModalAdd extends React.Component {
         const {activeModalAdd, setActiveModalAdd, onChangeFirstName, onChangeLastName, addEmploy, newEmploy } = this.props; 
         return (
             <div className={`modal_container_${activeModalAdd ? 'active' : ''} modal_container`} onClick={() => setActiveModalAdd(false)}>
-                <div className='modal_add_content' onClick={(e) => e.stopPropagation()}>
-                    <span>Добавление сотрудника</span>
-                    <form onSubmit={(e) => addEmploy(e)}>
+                <div className='modal_content' onClick={(e) => e.stopPropagation()}>
+                    <span className='description'>Добавление сотрудника</span>
+                    <form onSubmit={(e) => addEmploy(e)} className='form'>
                         <input placeholder='Введите имя' onChange={(e) => onChangeFirstName(e.target.value)} value={newEmploy.firstName}/>
                         <input placeholder='Введите фамилию' onChange={(e) => onChangeLastName(e.target.value)} value={newEmploy.lastName}/>
+                        <div className='button_container'>
                         <button type='submit' onClick={(e) => addEmploy(e)}> Добавить </button>
                         <button type='close' onClick={() => setActiveModalAdd(false)}> Закрыть окно</button>
+                        </div>
                     </form>
                 </div>
             </div>

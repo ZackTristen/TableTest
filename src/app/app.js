@@ -1,6 +1,6 @@
 import React from 'react';
 import ListItem from '../list-item/list-item';
-
+import './app.css'
 
 const App = () => {
     return (

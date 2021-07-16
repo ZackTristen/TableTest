@@ -14,21 +14,10 @@
       "id": 3,
       "firstName": "Lia",
       "lastName": "Down"
-      
     },
     {
       "id": 4,
       "firstName": "Alex",
-      "lastName": "Down"
-    },
-    {
-      "id": 5,
-      "firstName": "Denis",
-      "lastName": "Down"
-    },
-    {
-      "id": 6,
-      "firstName": "Morgan",
       "lastName": "Down"
     }
   ]
