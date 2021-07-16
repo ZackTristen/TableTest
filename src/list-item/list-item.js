@@ -11,9 +11,7 @@ class ListItem extends React.Component {
         serviceEmploy.getResource().then(res => this.setState({ data: [...res] }))
     }
 
-    componentDidUpdate() {
-        // console.log(this.state)
-    }
+    
     state = {
         active: false,
         data: [],
@@ -25,16 +23,39 @@ class ListItem extends React.Component {
 
     }
     setActive = (value) => {
-        this.setState({ active: value })
+        if (this.state.active) {
+            this.setState({ active: value })
+            this.clearInputForms()
+        } else if (this.state.active === false) {
+            this.setState({ active: value })
+        }
     }
 
     calculateLength = () => {
         const lengthArray = this.state.data.length
         return lengthArray;
     }
+
+    deleteEmploy = async (id) => {
+        const resStatus = await serviceEmploy.deletePerson(id);
+        if (resStatus === 200) {
+            const idx = this.state.data.findIndex(item => item.id === id)
+             return this.setState(state => {
+                return {
+                    ...state, 
+                    data: [
+                    ...state.data.slice(0, idx),
+                    ...state.data.slice(idx + 1)
+                    ]
+                }
+            })
+        }
+        
+    }
+
     addEmploy = async (e) => {
         e.preventDefault()
-
+        const {active} = this.state
         const { id, firstName, lastName } = this.state.newEmploy
         const newEmploy = {
             id: this.calculateLength() + 1,
@@ -42,7 +63,7 @@ class ListItem extends React.Component {
             lastName: lastName
         }
 
-        if (firstName.trim().length > 0 && lastName.trim().length) {
+        if (firstName.trim().length > 0 && lastName.trim().length && active) {
             const resStatus = await serviceEmploy.postPerson(newEmploy)
             if (resStatus === 201 || resStatus === 200) {
                 this.setState({
@@ -51,18 +72,23 @@ class ListItem extends React.Component {
                         newEmploy
                     ]
                 })
-                this.setState({
-                    newEmploy: {
-                        id: null,
-                        firstName: '',
-                        lastName: ''
-                    }
-                })
-            }
+                this.clearInputForms()
+                this.setActive(false)
+            } 
         }
+       
 
     }
-
+    clearInputForms = () => {
+        this.setState({
+            newEmploy: {
+                id: null,
+                firstName: '',
+                lastName: ''
+            }
+        })
+    }
+   
     onChangeFirstName = (value) => {
         this.setState({
             newEmploy: {
@@ -99,7 +125,10 @@ class ListItem extends React.Component {
                     <tbody>
                         {
                             data.map((item) => {
-                                return <Item item={item} key={item.id} />
+                                return <Item 
+                                item={item} 
+                                key={item.id}
+                                deleteEmploy={this.deleteEmploy} />
                             })
                         }
                     </tbody>

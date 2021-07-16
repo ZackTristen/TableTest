@@ -27,11 +27,6 @@
     },
     {
       "id": 6,
-      "firstName": "Peter",
-      "lastName": "Down"
-    },
-    {
-      "id": 7,
       "firstName": "Clark",
       "lastName": "Kent"
     }

@@ -9,7 +9,6 @@ class Item extends React.Component {
  
     state = {
         active: false,
-        person: this.props.item
     }
     setActive = (value) => {
         this.setState({ active: value })
@@ -17,8 +16,8 @@ class Item extends React.Component {
 
     render() {
 
-        const {id, firstName, lastName} = this.state.person;
-
+        const {item :{ id, firstName, lastName}, deleteEmploy} = this.props;
+        
         return (
             <tr >
                 <td>{firstName}</td>
@@ -28,7 +27,7 @@ class Item extends React.Component {
                         onClick={() => this.setActive(true)}>
                         Редактировать сотрудника
                     </button>
-                    <button>Удалить сотрудника</button>
+                    <button onClick={() => deleteEmploy(id)}>Удалить сотрудника</button>
                     <ModalEdit
                         setActive={this.setActive}
                         active={this.state.active} />
