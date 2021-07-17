@@ -61,8 +61,8 @@ class ListItem extends React.Component {
         const { firstName, lastName } = this.state.newEmploy
         const newEmploy = {
             id: this.calculateId() + 1,
-            firstName: firstName,
-            lastName: lastName
+            firstName: firstName.trim(),
+            lastName: lastName.trim()
         }
 
         if (firstName.trim().length > 0 && lastName.trim().length && active) {

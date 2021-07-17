@@ -1,7 +1,8 @@
 import React from 'react';
 import ModalEdit from '../modal-edit/modal-edit';
 import ServiceEmploy from '../services/service';
-import './item.css' 
+import './item.css'
+import ModalDelete from '../modal-delete/modal-delete';
 
 const serviceEmploy = new ServiceEmploy()
 class Item extends React.Component {
@@ -12,7 +13,8 @@ class Item extends React.Component {
         itemEdited: {
             firstName: this.props.item.firstName,
             lastName: this.props.item.lastName
-        }
+        },
+        activeDelete: false
     }
 
     onChangeLastName = (value) => {
@@ -54,6 +56,16 @@ class Item extends React.Component {
         }
     }
 
+    setActiveDelete = (value) => {
+
+        if (this.state.activeDelete) {
+            this.setState({ activeDelete: value })
+
+        } else if (this.state.activeDelete === false) {
+            this.setState({ activeDelete: value })
+        }
+    }
+
     editPerson = async (id, e) => {
         e.preventDefault()
         const { active } = this.state;
@@ -85,13 +97,19 @@ class Item extends React.Component {
                 <td>{firstName}</td>
                 <td>{lastName}</td>
                 <td>
-                    
-                        <i className="fas fa-user-edit" onClick={() => this.setActive(true)}><button
+
+                    <i className="fas fa-user-edit" onClick={() => this.setActive(true)}><button
                         onClick={() => this.setActive(true)}></button></i>
-                    
-                    
-                        <i className="fas fa-user-slash" onClick={() => deleteEmploy(id)} ><button onClick={() => deleteEmploy(id)}></button></i>
-                        
+
+
+                    <i className="fas fa-user-slash" onClick={() => this.setActiveDelete(true)}><button onClick={() => this.setActiveDelete(true)}></button></i>
+                    <ModalDelete
+                    setActive={this.setActiveDelete}
+                    active={this.state.activeDelete}
+                    item={this.state.itemEdited}
+                    deleteEmploy={deleteEmploy}
+                    id={id}
+                    />
                     <ModalEdit
                         setActive={this.setActive}
                         item={this.state.itemEdited}
