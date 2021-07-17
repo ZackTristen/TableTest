@@ -18,8 +18,10 @@ class ModalAdd extends React.Component {
                         <input placeholder='Введите имя' onChange={(e) => onChangeFirstName(e.target.value)} value={newEmploy.firstName}/>
                         <input placeholder='Введите фамилию' onChange={(e) => onChangeLastName(e.target.value)} value={newEmploy.lastName}/>
                         <div className='button_container'>
-                        <button type='submit' onClick={(e) => addEmploy(e)}> Добавить </button>
-                        <button type='close' onClick={() => setActiveModalAdd(false)}> Закрыть окно</button>
+                        <i className="fas fa-check-square" onClick={(e) => addEmploy(e)}><button type='submit' onClick={(e) => addEmploy(e)}></button> </i>
+                        <i className="fas fa-window-close" onClick={() => setActiveModalAdd(false)}><button type='close' onClick={() => setActiveModalAdd(false)}></button> </i>
+                        
+                        
                         </div>
                     </form>
                 </div>

@@ -93,34 +93,36 @@ class Item extends React.Component {
 
         const { item: { firstName, lastName, id }, deleteEmploy } = this.props
         return (
-            <tr className='row'>
+            
+            <tr>
                 <td>{firstName}</td>
                 <td>{lastName}</td>
                 <td>
-
                     <i className="fas fa-user-edit" onClick={() => this.setActive(true)}><button
                         onClick={() => this.setActive(true)}></button></i>
-
-
+                    
+                   
                     <i className="fas fa-user-slash" onClick={() => this.setActiveDelete(true)}><button onClick={() => this.setActiveDelete(true)}></button></i>
-                    <ModalDelete
-                    setActive={this.setActiveDelete}
-                    active={this.state.activeDelete}
-                    item={this.state.itemEdited}
-                    deleteEmploy={deleteEmploy}
-                    id={id}
-                    />
-                    <ModalEdit
-                        setActive={this.setActive}
-                        item={this.state.itemEdited}
-                        active={this.state.active}
-                        onChangeFirstName={this.onChangeFirstName}
-                        onChangeLastName={this.onChangeLastName}
-                        editPerson={this.editPerson}
-                        id={id}
-                    />
                 </td>
+                <ModalDelete
+             setActive={this.setActiveDelete}
+             active={this.state.activeDelete}
+             item={this.state.itemEdited}
+             deleteEmploy={deleteEmploy}
+             id={id}
+             />
+             
+             <ModalEdit
+                 setActive={this.setActive}
+                 item={this.state.itemEdited}
+                 active={this.state.active}
+                 onChangeFirstName={this.onChangeFirstName}
+                 onChangeLastName={this.onChangeLastName}
+                 editPerson={this.editPerson}
+                 id={id}
+             />
             </tr>
+             
         )
     }
 }

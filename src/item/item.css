@@ -1,0 +1,14 @@
+
+
+.fas {
+    transition-duration: 200ms;
+    transform: scale(1)
+}
+
+.fas:hover {
+    transition-duration: 200ms;
+    transform: scale(1.4)
+}
+
+
+

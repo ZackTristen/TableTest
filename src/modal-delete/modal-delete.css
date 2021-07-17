@@ -2,7 +2,6 @@
     display: flex;
     align-content: center;
     justify-content: center;
-    position: fixed;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -12,6 +11,7 @@
     left: 0;
     transform: scale(0);
     transition-duration: 200ms;
+    z-index: 10000;
     
 }
 
@@ -21,12 +21,12 @@
     width: 300px;
     height: 150px;
     background-color: white;
+    
 }
 
 .button_container {
     display: flex;
     justify-content: space-around;
-
     margin: 30px;
 }
 .description {
@@ -48,4 +48,13 @@
 .modal_container_active {
     transform: scale(1);
     transition-duration: 200ms;
+}
+
+.name {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.ask {
+    margin-top: 20px;
 }

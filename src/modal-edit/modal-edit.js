@@ -13,8 +13,10 @@ const ModalEdit = (props) => {
                     <input placeholder='Введите имя' value={item.firstName} onChange={(e) => onChangeFirstName(e.target.value)} />
                     <input placeholder='Введите фамилию' value={item.lastName} onChange={(e) => onChangeLastName(e.target.value)} />
                     <div className='button_container'>
-                    <button type='submit' onClick={(e) => editPerson(id, e)}> Редактировать </button>
-                    <button type='close' onClick={() => setActive(false)}>Закрыть окно</button>
+                    <i className="fas fa-check-square" onClick={(e) => editPerson(id, e)}> <button type='submit' onClick={(e) => editPerson(id, e)}></button></i>
+                    <i className="fas fa-window-close"  onClick={() => setActive(false)} ><button type='close' onClick={() => setActive(false)}></button></i>
+                   
+                    
                     </div>
                 </form>
             </div>

@@ -133,7 +133,7 @@ class ListItem extends React.Component {
         return (
             <div className='list_item'>
                 <div className='table'>
-                <table cellPadding='7' cellSpacing='7' >
+                <table >
                     <thead >
                         <tr>
                             <th>Имя</th>
@@ -156,8 +156,13 @@ class ListItem extends React.Component {
                         }
                     </tbody>
                 </table>
+                
                 </div>
-                   <i className="far fa-plus-square" onClick={() => this.setActive(true)}> <button className='btn_add' onClick={() => this.setActive(true)}> Добавить пользователя</button></i> 
+                <div className='btn_container'>
+                   <i className="far fa-plus-square" 
+                   onClick={() => this.setActive(true)}> 
+                   <button className='btn_add' onClick={() => this.setActive(true)}> <span> Добавить пользователя </span></button>
+                   </i> 
                     <ModalAdd
                         activeModalAdd={this.state.active}
                         setActiveModalAdd={this.setActive}
@@ -165,6 +170,7 @@ class ListItem extends React.Component {
                         onChangeFirstName={this.onChangeFirstName}
                         onChangeLastName={this.onChangeLastName}
                         newEmploy={this.state.newEmploy} />
+                        </div>
             </div>
         )
     }
