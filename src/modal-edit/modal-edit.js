@@ -15,8 +15,6 @@ const ModalEdit = (props) => {
                     <div className='button_container'>
                     <i className="fas fa-check-square" onClick={(e) => editPerson(id, e)}> <button type='submit' onClick={(e) => editPerson(id, e)}></button></i>
                     <i className="fas fa-window-close"  onClick={() => setActive(false)} ><button type='close' onClick={() => setActive(false)}></button></i>
-                   
-                    
                     </div>
                 </form>
             </div>

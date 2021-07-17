@@ -15,14 +15,7 @@
     
 }
 
-.modal_edit_content {
-    margin: auto;
-    padding: 20px;
-    width: 300px;
-    height: 150px;
-    background-color: white;
-    
-}
+
 
 .button_container {
     display: flex;

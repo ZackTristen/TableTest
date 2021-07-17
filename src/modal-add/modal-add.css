@@ -14,13 +14,7 @@
     z-index: 10000;
 }
 
-.modal_edit_content {
-    margin: auto;
-    padding: 20px;
-    width: 300px;
-    height: 150px;
-    background-color: white;
-}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -31,9 +25,9 @@
     justify-content: space-around;
     margin: 30px;
 }
-.description {
+/* .description {
     margin: auto;
-}
+} */
 .modal_content {
     display: flex;
     flex-direction: column;

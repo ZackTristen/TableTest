@@ -43,7 +43,9 @@ td, th {
     
 }
 
-
+thead tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.377);
+}
 tbody tr {
     transition-duration: 200ms;
 }
