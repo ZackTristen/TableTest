@@ -147,7 +147,7 @@ class ListItem extends React.Component {
     /**
  * функция для установки текста из форм в поля стейта
  * @param {string} value параметр в виде строки
- * устанавливающий значение в стейт из полей вода input
+ * устанавливающий значение в стейт из полей ввода input
  */
     onChangeLastName = (value) => {
       this.setState({
@@ -175,7 +175,7 @@ class ListItem extends React.Component {
     }
     /**
  *
- * @return {int} adasd
+ * @return {int} возвращает статус ответа на запрос из стейта
  */
     getStatus = () => {
       return this.state.status;
