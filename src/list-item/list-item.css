@@ -1,3 +1,32 @@
+
+.notify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    z-index: 5000;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+    text-align: center;
+    color: white;
+    background-color: rgba(46, 150, 89, 0.473);
+    box-shadow: 5px 5px 5px 0px rgba(13, 44, 23, 0.342);
+}
+.notify_200 {
+    background-color: rgba(46, 150, 89, 0.473);
+}
+.notify_400 {
+    background-color: rgba(110, 87, 21, 0.473);
+}
+.notify_404 {
+    background-color: rgba(124, 26, 26, 0.473);
+}
+.notify_500 {
+    background-color: rgba(124, 26, 26, 0.473);
+}
 .list-item {
     display: flex;
     flex-direction: column;

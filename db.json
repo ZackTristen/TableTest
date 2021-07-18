@@ -21,11 +21,6 @@
       "lastName": "February"
     },
     {
-      "id": 8,
-      "firstName": "Alex",
-      "lastName": "Mercer"
-    },
-    {
       "id": 9,
       "firstName": "Mila",
       "lastName": "Kruf"
@@ -34,46 +29,6 @@
       "id": 10,
       "firstName": "Evelyn",
       "lastName": "Travolt"
-    },
-    {
-      "id": 11,
-      "firstName": "Kale",
-      "lastName": "Flus"
-    },
-    {
-      "id": 12,
-      "firstName": "Artur",
-      "lastName": "Morgan"
-    },
-    {
-      "id": 13,
-      "firstName": "qwdsad",
-      "lastName": "qwdsad"
-    },
-    {
-      "id": 14,
-      "firstName": "qwdsad",
-      "lastName": "qwdsad"
-    },
-    {
-      "id": 15,
-      "firstName": "wqdsad",
-      "lastName": "fasqfsad"
-    },
-    {
-      "id": 16,
-      "firstName": "qwdasdqdsad",
-      "lastName": "qwasdsad"
-    },
-    {
-      "id": 17,
-      "firstName": "qwdsafd",
-      "lastName": "qwdsad"
-    },
-    {
-      "id": 18,
-      "firstName": "qwdsafqwdsa",
-      "lastName": "qwdsadfqfsa"
     }
   ]
 }

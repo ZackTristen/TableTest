@@ -3,7 +3,7 @@ import Item from '../item/item';
 import ModalAdd from '../modal-add/modal-add';
 import ServiceEmploy from '../services/service';
 import './list-item.css';
-import Notify from '../notification-service/notification-service';
+
 
 const serviceEmploy = new ServiceEmploy();
 /**
@@ -17,7 +17,10 @@ class ListItem extends React.Component {
    * и устанавливает их в стейт
    */
   async componentDidMount() {
-    serviceEmploy.getResource().then((res) => this.setState({data: [...res]}));
+    serviceEmploy.getResource().then((res) => {
+      this.onStatusChange(res);
+      this.setState({data: [...res]});
+    });
   }
 
 
@@ -28,7 +31,10 @@ class ListItem extends React.Component {
         firstName: '',
         lastName: '',
       },
-      status: [],
+      status: {
+        id: null,
+        number: null,
+      },
     }
 
     /**
@@ -62,6 +68,7 @@ class ListItem extends React.Component {
       const resStatus = await serviceEmploy.deletePerson(id);
       if (resStatus === 200) {
         const idx = this.state.data.findIndex((item) => item.id === id);
+        this.onStatusChange(resStatus);
         return this.setState((state) => {
           return {
             ...state,
@@ -103,22 +110,86 @@ class ListItem extends React.Component {
         }
       }
     }
+
+    /**
+ * функция которая возвращает готовую jsx нотификацию
+ * @param {int} status код ответа на запрос
+ * @return  {string} готовый jsx элемент
+ */
+    renderNotify = (status) => {
+      if (status === 200 || status === 201) {
+        setTimeout(() => this.setState({
+          status: {
+            id: null,
+            number: null,
+          },
+        }), 6000);
+
+        return <div
+          className={`notify notify_200`}>
+          <span>Все отлично, запрос прошел успешно</span>
+          <span>{status}</span>
+        </div>;
+      }
+      if ( status === 400 ) {
+        setTimeout(() => this.setState({
+          status: {
+            id: null,
+            number: null,
+          },
+        }), 6000);
+
+        return <div
+          className={`notify notify_${status}`}>
+          <span>Неверный запрос</span>
+          <span>{status}</span>
+        </div>;
+      }
+      if ( status === 404 ) {
+        setTimeout(() => this.setState({
+          status: {
+            id: null,
+            number: null,
+          },
+        }), 6000);
+
+        return <div
+          className={`notify notify_${status}`}>
+          <span>Сущность не найдена в системе</span>
+          <span>{status}</span>
+        </div>;
+      }
+      if ( status === 500 ) {
+        setTimeout(() => this.setState({
+          status: {
+            id: null,
+            number: null,
+          },
+        }), 6000);
+
+        return <div
+          className={`notify notify_${status}`}>
+          <span>Серверная ошибка</span>
+          <span>{status}</span>
+        </div>;
+      }
+      return (
+        <>
+        </>
+      );
+    }
     /**
  * функция добавляет в стейт объект созданного на основе кода ответа на запрос
  * @param {int} res параметр принимает код ответа на запрос
  */
     onStatusChange = (res) => {
-      const newStatus = {
-        number: res,
-        id: this.calculateId() + 1,
-      };
       this.setState((state) => {
         return {
           ...state,
-          status: [
-            ...this.state.status,
-            newStatus,
-          ],
+          status: {
+            id: this.calculateId() + 1,
+            number: res,
+          },
         };
       });
     }
@@ -173,13 +244,7 @@ class ListItem extends React.Component {
         ],
       });
     }
-    /**
- *
- * @return {int} возвращает статус ответа на запрос из стейта
- */
-    getStatus = () => {
-      return this.state.status;
-    }
+
     /**
  * функция обрабатывающая jsx код
  * @return {string} готовую таблицу
@@ -206,6 +271,7 @@ class ListItem extends React.Component {
                       deleteEmploy={this.deleteEmploy}
                       changeData={this.changeData}
                       data={this.state.data}
+                      onStatusChange={this.onStatusChange}
                     />;
                   })
                 }
@@ -228,7 +294,11 @@ class ListItem extends React.Component {
               onChangeFirstName={this.onChangeFirstName}
               onChangeLastName={this.onChangeLastName}
               newEmploy={this.state.newEmploy} />
-            <Notify status={this.state.status}/>
+            <div>
+              {
+                this.renderNotify(this.state.status.number)
+              }
+            </div>
           </div>
         </div>
       );
