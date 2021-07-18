@@ -22,10 +22,10 @@
     background-color: rgba(110, 87, 21, 0.473);
 }
 .notify_404 {
-    background-color: rgba(124, 26, 26, 0.473);
+    background-color: rgba(148, 0, 0, 0.473);
 }
 .notify_500 {
-    background-color: rgba(124, 26, 26, 0.473);
+    background-color: rgba(168, 0, 0, 0.473);
 }
 .list-item {
     display: flex;
@@ -51,6 +51,7 @@ table {
 
 .btn_container {
     margin-top: 20px;
+    margin-bottom: 70px;
     display: flex;
     justify-content: center;
     align-content: center;

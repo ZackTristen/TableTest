@@ -66,9 +66,9 @@ class ListItem extends React.Component {
  */
     deleteEmploy = async (id) => {
       const resStatus = await serviceEmploy.deletePerson(id);
+      this.onStatusChange(resStatus);
       if (resStatus === 200) {
         const idx = this.state.data.findIndex((item) => item.id === id);
-        this.onStatusChange(resStatus);
         return this.setState((state) => {
           return {
             ...state,
@@ -97,14 +97,17 @@ class ListItem extends React.Component {
 
       if (firstName.trim().length > 0 && lastName.trim().length && active) {
         const resStatus = await serviceEmploy.postPerson(newEmploy);
+        this.onStatusChange(resStatus);
         if (resStatus === 201 || resStatus === 200) {
-          this.setState({
-            data: [
-              ...this.state.data,
-              newEmploy,
-            ],
+          this.setState((state) => {
+            return {
+              ...state,
+              data: [
+                ...state.data,
+                newEmploy,
+              ],
+            };
           });
-          this.onStatusChange(resStatus);
           this.clearInputForms();
           this.setActive(false);
         }

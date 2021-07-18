@@ -98,10 +98,10 @@ class Item extends React.Component {
       const {changeData, data, onStatusChange} = this.props;
       if (firstName.trim().length > 0 && lastName.trim().length > 0 && active) {
         const resStatus = await serviceEmploy.editPerson(id, editedPerson);
+        onStatusChange(resStatus);
         if (resStatus === 200 || resStatus === 201) {
           const idx = data.findIndex((item) => item.id === id);
           changeData(editedPerson, idx);
-          onStatusChange(resStatus);
           this.clearInputForms();
           this.setActive(false);
         }
