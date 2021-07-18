@@ -3,7 +3,7 @@
  * Класс сервис реализующий сетевые функции
  */
 class ServiceEmploy {
-    _baseUrl = 'http://localhost:3000/persons/';
+    _baseUrl = 'http://localhost:3001/persons/';
     /**
  *
  * @return {string} тело ответа в виде массива пользвателей
