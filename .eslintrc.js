@@ -22,6 +22,7 @@ module.exports = {
     'max-len': ['error', {'code': 80, 'tabWidth': 2}],
     'no-invalid-this': 'off',
     'react/prop-types': 'off',
+    'linebreak-style': 'off',
     // 'react/jsx-props-no-multi-spaces': 2,
   },
 };
