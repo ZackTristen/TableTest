@@ -25,4 +25,9 @@ module.exports = {
     'linebreak-style': 'off',
     // 'react/jsx-props-no-multi-spaces': 2,
   },
+  'settings': {
+    'react': {
+      'version': 'detect',
+    },
+  },
 };
